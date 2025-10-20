@@ -2,6 +2,10 @@
 
 This Project is part of the S4CP Training accessible at [https://rohitsalecha.com/s4cp/](https://rohitsalecha.com/s4cp/)
 
+## Chapter 2E
+
+- AWS Multi-Account CI/CD Flow
+
 ## Chapter 2D
 
 - Creating AWS IAM Users
