@@ -1,4 +1,5 @@
 // Add only Variables that'll be used Globally across all modules
+// Keeping region as default to us-east-2 since its IAM
 
 variable "accounts" {
   description = "Account Names that need to be created."
@@ -21,3 +22,9 @@ variable "domain" {
   type        = string
 
 }
+
+variable "users" {
+  description = "List of Users, usernames , isAdmin PGP Keys"
+  type        = map(map(string))
+}
+

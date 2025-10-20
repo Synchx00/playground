@@ -2,6 +2,10 @@
 
 This Project is part of the S4CP Training accessible at [https://rohitsalecha.com/s4cp/](https://rohitsalecha.com/s4cp/)
 
+## Chapter 2D
+
+- Creating AWS IAM Users
+
 ## Chapter 2C
 
 - Creating AWS IAM Roles and Groups
