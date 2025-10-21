@@ -30,3 +30,11 @@ output "users" {
     }
   }
 }
+
+# Spool out ARNs of OIDCECRAdmin Roles
+output "GithubOIDCECRRole" {
+  value = {
+    prod_oidc_ecr = module.prod.assume_oidc_ecr_role
+    dev_oidc_ecr = module.dev.assume_oidc_ecr_role
+  }
+}

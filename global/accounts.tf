@@ -1,3 +1,9 @@
+variable "github_account_repo" {
+  description = "Github Account and Repository that will be interacting with AWS OIDC"
+  default       = "Synchx00/playground" #@CHANGEME
+  type        = string
+}
+
 # Create all Identity Account resources
 module "identity" {
   source = "./identity"
@@ -15,7 +21,7 @@ module "prod" {
   account             = "prod"
   identity_account_id = module.identity_account.id
   domain              = "prod.${var.domain}"
-
+  github_account_repo = var.github_account_repo
   providers = {
     aws = aws.prod
   }
@@ -29,6 +35,7 @@ module "dev" {
   account             = "dev"
   identity_account_id = module.identity_account.id
   domain              = "dev.${var.domain}"
+  github_account_repo = var.github_account_repo
 
   providers = {
     aws = aws.dev

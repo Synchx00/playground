@@ -13,3 +13,8 @@ variable "domain" {
   description = "Domain Name for Hosted Zone Configuration"
   type        = string
 }
+
+variable "github_account_repo" {
+  description = "Github Account and Repository that will be interacting with AWS OIDC"
+  type        = string
+}

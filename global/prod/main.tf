@@ -30,3 +30,26 @@ resource "aws_route53_zone" "default" {
     terraform-managed = "true"
   }
 }
+
+resource "aws_ecr_repository" "default" {
+  name                 = "s4cpecr"
+  image_tag_mutability = "IMMUTABLE"
+  force_delete         = true
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+  tags = {
+    env               = "${var.account}"
+    terraform-managed = "true"
+  }
+}
+
+module "github_oidc_ecr_role" {
+  source  = "github.com/terraform-module/terraform-aws-github-oidc-provider.git?ref=v2.2.0"
+
+  create_oidc_provider = true
+  create_oidc_role     = true
+  role_name            = "OIDCECRAdmin${var.account}"
+  repositories              = ["${var.github_account_repo}"]
+  oidc_role_attach_policies = ["arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess"]
+}
