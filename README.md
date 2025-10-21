@@ -2,6 +2,13 @@
 
 This Project is part of the S4CP Training accessible at [https://rohitsalecha.com/s4cp/](https://rohitsalecha.com/s4cp/)
 
+## Chapter 3D
+
+- Integrating GitLeaks in GHA (secrets.yaml) 
+- Running True Positive Scenario
+- Creating Custom GitLeaks Configuration
+- Erasing Git History
+
 ## Chapter 3C
 
 - Integrating Dependency-checker in GHA (sca.yaml)

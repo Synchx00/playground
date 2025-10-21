@@ -13,7 +13,10 @@ on:
     paths:
       - "app/**"
       - "!app/pom.xml"
-  workflow_dispatch:   
+  workflow_dispatch:
+
+env:
+  GIT_ACTOR: "@${{ github.actor }}"  
 
 jobs:
   semgrep:
@@ -22,10 +25,12 @@ jobs:
     permissions:
       id-token: write
       contents: write
-      pull-requests: write
+      pull-requests: write      
     steps:
-      - name: Clone Application
+      - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -33,7 +38,14 @@ jobs:
           python-version: "3.9"
         
       - name: Install Semgrep
-        run: python3 -m pip install semgrep        
+        run: python3 -m pip install semgrep
+
+      - name: Run Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_NOTIFY_USER_LIST: ${{ env.GIT_ACTOR }}
 
       - name: Run Semgrep and Process stdout
         uses: mathiasvr/command-output@v2.0.0
