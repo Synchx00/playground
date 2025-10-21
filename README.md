@@ -2,6 +2,12 @@
 
 This Project is part of the S4CP Training accessible at [https://rohitsalecha.com/s4cp/](https://rohitsalecha.com/s4cp/)
 
+## Chapter 3C
+
+- Integrating Dependency-checker in GHA (sca.yaml)
+- Running Github Actions
+- Fixing Dependency Issue
+
 ## Chapter 3B
 
 - GHA for running Semgrep (sast.yaml)
