@@ -2,6 +2,18 @@
 
 This Project is part of the S4CP Training accessible at [https://rohitsalecha.com/s4cp/](https://rohitsalecha.com/s4cp/)
 
+## Chapter 3B
+
+- GHA for running Semgrep (sast.yaml)
+- Deploy the Semgrep Rules via GHA
+- Test Violations
+- Fix the vulnerability
+
+## Chapter 3A
+
+- Rule for Command Injection
+- Rule for SQL Injection
+
 ## Chapter 2E
 
 - AWS Multi-Account CI/CD Flow
