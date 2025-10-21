@@ -54,6 +54,8 @@ locals {
   assume_role_arn = "arn:aws:iam::${var.assume_role_account_id}:role/Administrator"
 }
 provider "aws" {
+  access_key = "AKIAERKSDFASDFKASDMD"
+  secret_key = "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"
 
   assume_role {
     role_arn = local.assume_role_arn
