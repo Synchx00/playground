@@ -5,6 +5,9 @@ COPY src /build/src/
 RUN mvn package
 
 FROM openjdk:17-alpine
-COPY --from=MAVEN_BUILD /build/target/gitops.jar gitops.jar
+RUN addgroup boot && adduser -D -h /home/boot -s /bin/ash boot -G boot
+USER boot
+WORKDIR /home/boot
+COPY --from=MAVEN_BUILD /build/target/gitops.jar /home/boot/gitops.jar
 EXPOSE 8080
-CMD java -jar gitops.jar
+CMD java -jar /home/boot/gitops.jar
