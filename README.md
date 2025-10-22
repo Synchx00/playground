@@ -2,6 +2,11 @@
 
 This Project is part of the S4CP Training accessible at [https://rohitsalecha.com/s4cp/](https://rohitsalecha.com/s4cp/)
 
+## Chapter 5F
+
+- Installing Kyverno
+- Testing Violations
+
 ## Chapter 5E
 
 - Secrets Management in EKS with AWS SM
