@@ -53,3 +53,45 @@ module "github_oidc_ecr_role" {
   repositories              = ["${var.github_account_repo}"]
   oidc_role_attach_policies = ["arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess"]
 }
+
+data "aws_iam_policy_document" "k8s_access" {
+  statement {
+    sid       = ""
+    effect    = "Allow"
+    resources = ["*"]
+
+    actions = [
+      "eks:DescribeCluster",
+      "eks:ListClusters",
+    ]
+  }
+}
+
+# Create an K8s Policy
+resource "aws_iam_policy" "k8s_access" {
+  name   = "K8sAccess"
+  policy = data.aws_iam_policy_document.k8s_access.json
+
+}
+
+module "assume_k8s_admin_role_with_mfa" {
+  source = "../../modules/assumerolepolicytrust"
+
+  role_name      = "AssumeRoleK8sAdminWithMFA${var.account}"
+  trusted_entity = "arn:aws:iam::${var.identity_account_id}:root"
+  policy_arn     = [aws_iam_policy.k8s_access.arn]
+  account        = var.account
+  mfa_needed     = true
+
+}
+
+module "assume_k8s_developer_role_with_mfa" {
+  source = "../../modules/assumerolepolicytrust"
+
+  role_name      = "AssumeRoleK8sDeveloperWithMFA${var.account}"
+  trusted_entity = "arn:aws:iam::${var.identity_account_id}:root"
+  policy_arn     = [aws_iam_policy.k8s_access.arn]
+  account        = var.account
+  mfa_needed     = true
+
+}
