@@ -2,6 +2,10 @@
 
 This Project is part of the S4CP Training accessible at [https://rohitsalecha.com/s4cp/](https://rohitsalecha.com/s4cp/)
 
+## Chapter 5C
+
+- Implementing EKS RBAC
+
 ## Chapter 5B
 
 - Creating K8s IAM Roles

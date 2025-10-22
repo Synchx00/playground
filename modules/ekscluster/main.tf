@@ -52,6 +52,8 @@ module "eks" {
   cluster_endpoint_public_access = true
   manage_aws_auth_configmap      = true
 
+  aws_auth_roles = var.aws_auth_roles
+
   tags = {
     Name              = var.clustername
     Environment       = var.environment

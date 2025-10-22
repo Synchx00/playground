@@ -27,3 +27,12 @@ variable "instance_types" {
   description = "Instance Types for Deploying the k8s environment"
   type        = list(string)
 }
+
+variable "aws_auth_roles" {
+  description = "List of IAM roles for AWS auth"
+  type = list(object({
+    rolearn  = string
+    username = string
+    groups   = list(string)
+  }))
+}

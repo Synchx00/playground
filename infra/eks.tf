@@ -22,6 +22,7 @@ module "eks" {
   vpc_id          = module.networking.vpc_id
   environment     = var.environment
   instance_types  = var.instance_types
+  aws_auth_roles  = local.aws_auth_roles
 
 }
 
