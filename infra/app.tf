@@ -36,18 +36,18 @@ resource "helm_release" "csi_secrets" {
 
 # Install the CSI Secrets Driver for AWS using the helm chart.
 # https://aws.github.io/secrets-store-csi-driver-provider-aws/
-resource "helm_release" "aws_csi_secrets" {
-  name            = "aws-secrets-manager"
-  chart           = "secrets-store-csi-driver-provider-aws"
-  namespace       = "kube-system"
-  repository      = "https://aws.github.io/secrets-store-csi-driver-provider-aws"
-  cleanup_on_fail = true
-
-  depends_on = [
-    helm_release.csi_secrets
-  ]
-
-}
+# resource "helm_release" "aws_csi_secrets" {
+# name            = "aws-secrets-manager"
+# chart           = "secrets-store-csi-driver-provider-aws"
+# namespace       = "kube-system"
+# repository      = "https://aws.github.io/secrets-store-csi-driver-provider-aws"
+# cleanup_on_fail = true
+#
+# depends_on = [
+#   helm_release.csi_secrets
+# ]
+#
+# }
 
 ################# Create Service Accounts ###########################
 
