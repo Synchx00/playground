@@ -83,17 +83,17 @@ module "pgsql" {
   depends_on = [module.networking]
 }
 
+# Write the DB random password in AWS Secrets Manager
+module "awssm-db-password" {
+  source = "../modules/awssm"
 
-# Write the DB random password in SSM
-module "ssmw-db-password" {
-  source                = "../modules/ssmw"
-  parameter_name        = "db_password"
-  parameter_path        = "/${var.org_name}/database"
-  parameter_value       = module.pgsql.db_instance_password
-  parameter_description = "DB Password"
-  clustername           = module.clustername.cluster_name
-  parameter_type        = "SecureString"
-  environment           = var.environment
+  parameter_name          = var.db_pwd_parameter_name
+  secret_value            = module.pgsql.db_instance_password
+  description             = "DB Password"
+  environment             = var.environment
+  deletion_window_in_days = 0
+
+  depends_on = [module.pgsql]
 }
 
 # Write the DB end point URL in SSM
@@ -107,6 +107,8 @@ module "ssmw-db-endpoint" {
   clustername           = module.clustername.cluster_name
   parameter_type        = "String"
   environment           = var.environment
+
+  depends_on = [module.pgsql]
 }
 
 ######################## OUTPUT ########################

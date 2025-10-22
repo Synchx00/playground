@@ -45,3 +45,8 @@ variable "app_docker_img" {
   default     = "salecharohit/practicalgitops"
 }
 
+variable "db_pwd_parameter_name" {
+  description = "Name of the Parameter holding DB Password"
+  type        = string
+  default     = "dbpassword"
+}
