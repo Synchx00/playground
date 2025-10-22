@@ -2,6 +2,10 @@
 
 This Project is part of the S4CP Training accessible at [https://rohitsalecha.com/s4cp/](https://rohitsalecha.com/s4cp/)
 
+## Chapter 4D
+
+- Trivy Integration
+
 ## Chapter 4C
 
 - Semgrep Rules for Scanning Dockerfiles
