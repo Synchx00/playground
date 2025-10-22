@@ -2,6 +2,10 @@
 
 This Project is part of the S4CP Training accessible at [https://rohitsalecha.com/s4cp/](https://rohitsalecha.com/s4cp/)
 
+## Chapter 4C
+
+- Semgrep Rules for Scanning Dockerfiles
+
 ## Chapter 4B
 
 - Docker Image Build and Push GHA (docker-prod.yaml,docker-dev.yaml)
