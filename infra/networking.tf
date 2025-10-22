@@ -84,3 +84,24 @@ module "generic_sg_egress" {
 }
 
 ######################## OUTPUTS ########################
+
+######################## TO BE DELETED ########################
+
+# Generic Ingress Security Group Module
+module "generic_sg_ingress" {
+  source = "../modules/securitygroup"
+
+  sg_name        = "generic_sg_ingress"
+  sg_description = "Allow internet to connect too all services"
+  environment    = var.environment
+  vpc_id         = module.networking.vpc_id
+  type           = "ingress"
+  from_port      = 0
+  to_port        = 65535
+  protocol       = "tcp"
+  cidr_blocks    = ["0.0.0.0/0"]
+
+  depends_on = [module.networking]
+}
+
+######################## TO BE DELETED ########################

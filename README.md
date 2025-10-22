@@ -2,6 +2,14 @@
 
 This Project is part of the S4CP Training accessible at [https://rohitsalecha.com/s4cp/](https://rohitsalecha.com/s4cp/)
 
+## Chapter 6C
+
+- Integrating OPA in GHA
+
+## Chapter 6B
+
+- Introduction to OPA
+
 ## Chapter 6A
 
 - Install SCPs (Service Control Policies)
