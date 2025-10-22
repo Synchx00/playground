@@ -12,42 +12,34 @@ resource "kubernetes_namespace_v1" "app" {
 
 ################ Install CSI Driver ################################
 
-# https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html
-resource "helm_release" "csi_secrets" {
-  name            = "csi-secrets-store"
-  chart           = "secrets-store-csi-driver"
-  version         = "1.3.0"
-  repository      = "https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts"
+
+# Install the CSI Secrets Driver for AWS using the helm chart.
+# https://aws.github.io/secrets-store-csi-driver-provider-aws/
+resource "helm_release" "aws_csi_secrets" {
+  name            = "aws-secrets-manager"
+  chart           = "secrets-store-csi-driver-provider-aws"
   namespace       = "kube-system"
+  repository      = "https://aws.github.io/secrets-store-csi-driver-provider-aws"
   cleanup_on_fail = true
+  version         = "1.0.0" # It's good practice to pin the provider version too
 
   dynamic "set" {
     for_each = {
-      "syncSecret.enabled"   = true
-      "enableSecretRotation" = false
+      # We prefix these settings with the sub-chart name
+      # to pass them down to the base driver.
+      "secrets-store-csi-driver.syncSecret.enabled"   = true
+      "secrets-store-csi-driver.enableSecretRotation" = false
     }
     content {
       name  = set.key
       value = set.value
     }
   }
-  depends_on = [module.eks]
-}
 
-# Install the CSI Secrets Driver for AWS using the helm chart.
-# https://aws.github.io/secrets-store-csi-driver-provider-aws/
-# resource "helm_release" "aws_csi_secrets" {
-# name            = "aws-secrets-manager"
-# chart           = "secrets-store-csi-driver-provider-aws"
-# namespace       = "kube-system"
-# repository      = "https://aws.github.io/secrets-store-csi-driver-provider-aws"
-# cleanup_on_fail = true
-#
-# depends_on = [
-#   helm_release.csi_secrets
-# ]
-#
-# }
+  depends_on = [
+    module.eks
+  ]
+}
 
 ################# Create Service Accounts ###########################
 
