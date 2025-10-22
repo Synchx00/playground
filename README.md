@@ -2,6 +2,10 @@
 
 This Project is part of the S4CP Training accessible at [https://rohitsalecha.com/s4cp/](https://rohitsalecha.com/s4cp/)
 
+## Chapter 5I
+
+- Installing Network Security Policy
+
 ## Chapter 5G
 
 - Installing Calico
