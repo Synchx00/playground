@@ -8,6 +8,11 @@ module "eks" {
   vpc_id          = var.vpc_id
   enable_irsa     = true
 
+  cluster_encryption_config = {
+    provider_key_arn = var.kms_key_arn
+    resources        = ["secrets"]
+  }
+
   # Extend node-to-node security group rules
   node_security_group_additional_rules = {
 

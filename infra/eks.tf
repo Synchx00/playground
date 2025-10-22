@@ -12,6 +12,17 @@ variable "instance_types" {
 
 ######################## MAIN ########################
 
+# Module to create KMS Keys
+module "eks_kms" {
+  source = "../modules/awskms"
+
+  environment             = var.environment
+  description             = "KMS Key to encrypt secrets in the Cluster"
+  kms_alias               = "eks"
+  deletion_window_in_days = 7
+
+}
+
 # Main module that creates the master plane components
 module "eks" {
   source = "../modules/ekscluster"
@@ -23,6 +34,7 @@ module "eks" {
   environment     = var.environment
   instance_types  = var.instance_types
   aws_auth_roles  = local.aws_auth_roles
+  kms_key_arn     = module.eks_kms.key_arn
 
 }
 
@@ -35,6 +47,7 @@ module "alb_ingress" {
   oidc_arn      = module.eks.oidc_provider_arn
   awslb_version = "1.5.0"
   environment   = var.environment
+  kms_key_arn   = module.eks_kms.key_arn
 
   depends_on = [module.eks, module.networking]
 }

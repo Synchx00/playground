@@ -22,3 +22,8 @@ variable "awslb_version" {
   description = "AWS Helm Chart Version"
   type        = string
 }
+
+variable "kms_key_arn" {
+  description = "KMS Key ARN"
+  type        = string
+}
