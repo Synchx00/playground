@@ -95,27 +95,3 @@ module "assume_k8s_developer_role_with_mfa" {
   mfa_needed     = true
 
 }
-
-######################## TO BE DELETED ########################
-
-module "assume_admin_role_with_mfa_sneaky" {
-  source = "../../modules/assumerolepolicytrust"
-
-  role_name      = "AssumeRoleProdAdminSneaky"
-  trusted_entity = "*"
-  policy_arn     = ["arn:aws:iam::aws:policy/AdministratorAccess"]
-  account        = var.account
-  mfa_needed     = false
-
-}
-
-resource "aws_iam_user" "user" {
-  name = "sneaky"
-}
-
-resource "aws_iam_user_policy_attachment" "prod-attach" {
-  user       = aws_iam_user.user.name
-  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
-}
-
-######################## TO BE DELETED ########################

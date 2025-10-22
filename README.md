@@ -2,6 +2,10 @@
 
 This Project is part of the S4CP Training accessible at [https://rohitsalecha.com/s4cp/](https://rohitsalecha.com/s4cp/)
 
+## Chapter 6D
+
+- Testing OPA Runtime
+
 ## Chapter 6C
 
 - Integrating OPA in GHA
