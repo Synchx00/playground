@@ -1,5 +1,13 @@
 # Intialising Root Organisation
 resource "aws_organizations_organization" "root" {
+
+  enabled_policy_types = [
+    "SERVICE_CONTROL_POLICY",
+    "TAG_POLICY"
+  ]
+
+  feature_set = "ALL"
+
 }
 
 # Create an OU for Identity management
