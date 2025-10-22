@@ -2,6 +2,10 @@
 
 This Project is part of the S4CP Training accessible at [https://rohitsalecha.com/s4cp/](https://rohitsalecha.com/s4cp/)
 
+## Chapter 5A
+
+- Setting Up Prod K8s
+
 ## Chapter 4D
 
 - Trivy Integration

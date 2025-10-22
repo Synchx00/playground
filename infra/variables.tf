@@ -21,3 +21,27 @@ variable "assume_role_account_id" {
   description = "ID Of the Account which needs to be assumed to run terraform"
   type        = string
 }
+
+variable "db_name" {
+  description = "Name of the PostgreSQL Database"
+  type        = string
+  default     = "s4cp"
+}
+
+variable "db_user_name" {
+  description = "Name of User for Accessing PGQSL Database"
+  type        = string
+  default     = "s4cp"
+}
+
+variable "domain" {
+  description = "The FQDN domain"
+  type        = string
+}
+
+variable "app_docker_img" {
+  description = "Docker Image that needs to be executed"
+  type        = string
+  default     = "salecharohit/practicalgitops"
+}
+
