@@ -2,8 +2,8 @@ name: s4cp.gitleaks
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 8 * * *" # run once a day at 8 AM
+  # schedule:
+  #   - cron: "0 8 * * *" # run once a day at 8 AM
 
 env:
   GIT_ACTOR: "@${{ github.actor }}"
